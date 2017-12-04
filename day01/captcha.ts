@@ -1,30 +1,25 @@
-function simpleCaptcha(s: string) {
-    let total = 0;
+function captcha(offsetCallback: (s: string) => number): (s: string) => number {
+    return (s: string) => {
+        let total = 0;
+        const offset = offsetCallback(s);
 
-    for (let i: number = 0; i < s.length; i++) {
-        if (modIndex(s, i) === modIndex(s, i + 1)) {
-            total += +modIndex(s, i);
+        for (let i: number = 0; i < s.length; i++) {
+            if (modIndex(s, i) === modIndex(s, i + offset)) {
+                total += +modIndex(s, i);
+            }
         }
-    }
 
-    return total;
+        return total;
+    };
 }
 
-function modIndex(s: string, i: number) {
+const simpleCaptcha: (s: string) => number =
+    captcha(() => 1);
+const complexCaptcha: (s: string) => number =
+    captcha((s) => Math.floor(s.length / 2));
+
+function modIndex(s: string, i: number): string {
     return s.charAt(i % s.length);
 }
 
-function complexCaptcha(s: string) {
-    let total = 0;
-    const offset = Math.floor(s.length / 2);
-
-    for (let i: number = 0; i < s.length; i++) {
-        if (modIndex(s, i) === modIndex(s, i + offset)) {
-            total += +modIndex(s, i);
-        }
-    }
-
-    return total;
-}
-
-export { simpleCaptcha, complexCaptcha, modIndex } ;
+export { simpleCaptcha, complexCaptcha } ;
