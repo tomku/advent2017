@@ -1,0 +1,28 @@
+{
+  "name": "advent2017",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^21.1.8",
+    "jest": "^21.2.1",
+    "ts-jest": "^21.2.4",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  }
+}
