@@ -1,4 +1,4 @@
-import { complexCaptcha, simpleCaptcha} from "./captcha";
+import {complexCaptcha, simpleCaptcha} from "./captcha";
 
 test("captcha puzzle #1", () => {
     expect(simpleCaptcha("1122")).toBe(3);

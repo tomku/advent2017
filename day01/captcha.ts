@@ -22,4 +22,4 @@ function modIndex(s: string, i: number): string {
     return s.charAt(i % s.length);
 }
 
-export { simpleCaptcha, complexCaptcha } ;
+export {simpleCaptcha, complexCaptcha} ;
