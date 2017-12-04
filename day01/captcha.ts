@@ -1,14 +1,30 @@
-function captcha(s: string) {
+function simpleCaptcha(s: string) {
     let total = 0;
-    const wrapped = s + s.charAt(0);
 
-    for (let i: number = 0; i < wrapped.length - 1; i++) {
-        if (wrapped.charAt(i) === wrapped.charAt(i + 1)) {
-            total += +wrapped.charAt(i);
+    for (let i: number = 0; i < s.length; i++) {
+        if (modIndex(s, i) === modIndex(s, i + 1)) {
+            total += +modIndex(s, i);
         }
     }
 
     return total;
 }
 
-export { captcha} ;
+function modIndex(s: string, i: number) {
+    return s.charAt(i % s.length);
+}
+
+function complexCaptcha(s: string) {
+    let total = 0;
+    const offset = Math.floor(s.length / 2);
+
+    for (let i: number = 0; i < s.length; i++) {
+        if (modIndex(s, i) === modIndex(s, i + offset)) {
+            total += +modIndex(s, i);
+        }
+    }
+
+    return total;
+}
+
+export { simpleCaptcha, complexCaptcha, modIndex } ;
