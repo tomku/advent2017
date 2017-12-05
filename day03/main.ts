@@ -4,4 +4,4 @@ const puzzle = 368078;
 
 console.log(spiralDistance(puzzle));
 
-console.log(fillGrid(368078));
+console.log(fillGrid(puzzle));
