@@ -1,4 +1,4 @@
-import {minmaxChecksum, quotChecksum} from "./corruption";
+import {minmaxChecksum, quotChecksum} from "./corruption"
 
 const puzzle = "116\t1470\t2610\t179\t2161\t2690\t831\t1824\t2361\t1050\t2201\t118\t145\t2275\t2625\t2333\n" +
     "976\t220\t1129\t553\t422\t950\t332\t204\t1247\t1092\t1091\t159\t174\t182\t984\t713\n" +
@@ -15,7 +15,7 @@ const puzzle = "116\t1470\t2610\t179\t2161\t2690\t831\t1824\t2361\t1050\t2201\t1
     "799\t739\t75\t1537\t82\t228\t69\t1397\t1396\t1203\t1587\t63\t313\t1718\t1375\t469\n" +
     "1176\t112\t1407\t136\t1482\t1534\t1384\t1202\t604\t851\t190\t284\t1226\t113\t114\t687\n" +
     "73\t1620\t81\t1137\t812\t75\t1326\t1355\t1545\t1666\t1356\t1681\t1732\t85\t128\t902\n" +
-    "571\t547\t160\t237\t256\t30\t496\t592\t385\t576\t183\t692\t192\t387\t647\t233";
+    "571\t547\t160\t237\t256\t30\t496\t592\t385\t576\t183\t692\t192\t387\t647\t233"
 
-console.log("First spreadsheet checksum: " + minmaxChecksum(puzzle));
-console.log("Second spreadsheet checksum: " + quotChecksum(puzzle));
+console.log("First spreadsheet checksum: " + minmaxChecksum(puzzle))
+console.log("Second spreadsheet checksum: " + quotChecksum(puzzle))

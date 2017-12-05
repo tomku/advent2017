@@ -1,7 +1,7 @@
-import {fillGrid, spiralDistance} from "./spiral";
+import {fillGrid, spiralDistance} from "./spiral"
 
-const puzzle = 368078;
+const puzzle = 368078
 
-console.log(spiralDistance(puzzle));
+console.log(spiralDistance(puzzle))
 
-console.log(fillGrid(puzzle));
+console.log(fillGrid(puzzle))
