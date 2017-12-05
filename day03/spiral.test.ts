@@ -1,4 +1,4 @@
-import {spiralDistance} from "./spiral";
+import {fillGrid, spiralDistance} from "./spiral";
 
 test("spiral distance examples", () => {
     expect(spiralDistance(1)).toBe(0);
@@ -16,4 +16,13 @@ test("spiral distance examples", () => {
     expect(spiralDistance(47)).toBe(4);
     expect(spiralDistance(1024)).toBe(31);
     expect(spiralDistance(368078)).toBe(371);
+});
+
+test("grid filling examples", () => {
+    expect(fillGrid(7)).toBe(10);
+    expect(fillGrid(55)).toBe(57);
+    expect(fillGrid(200)).toBe(304);
+    expect(fillGrid(363)).toBe(747);
+    expect(fillGrid(748)).toBe(806);
+
 });

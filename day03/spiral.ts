@@ -10,7 +10,7 @@ function rings(n: number): number[] {
     return out;
 }
 
-function spiralDistanceRec(n: number): number {
+function moveIn(n: number): number {
     if (n < 2) {
         return 0;
     }
@@ -24,6 +24,13 @@ function spiralDistanceRec(n: number): number {
     const min = square[1] + 1;
     // It's useful to have our number's ordinal position in its ring.
     const ord = n - min + 1;
+    const size = square[0] - square[1];
+
+    // Are we at the last entry of the ring?
+    if (ord === size) {
+        // If so, moving to the start of the ring is optimal.
+        return n - (size - 1);
+    }
 
     // Are we at a corner or the first entry of the ring?
     if (ord % (ring[0] - 1) === 0 || ord === 1) {
@@ -41,16 +48,33 @@ function spiralDistanceRec(n: number): number {
     return n - (delta + q * 2);
 }
 
-// Trampoline for spiralDistanceRec.
+// Trampoline for moveIn.
 function spiralDistance(n: number): number {
     let dist = 0;
 
     while (n >= 2) {
-        n = spiralDistanceRec(n);
+        n = moveIn(n);
         dist++;
     }
 
     return dist;
 }
 
-export {spiralDistance};
+function fillGrid(n: number): number {
+    const grid = [0, 1];
+    let x = 2;
+
+    while (grid[x - 1] < n) {
+        const neighbors = new Set([x - 1, moveIn(x), moveIn(x - 1), moveIn(x + 1)]);
+        neighbors.delete(x);
+        grid[x] = 0;
+        for (const i of neighbors) {
+            grid[x] += grid[i];
+        }
+
+        x++;
+    }
+    return grid[x - 1];
+}
+
+export {spiralDistance, fillGrid};
