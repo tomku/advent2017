@@ -71,14 +71,14 @@ function argmax(nums: number[]): number {
 
 function fixWrongWeight(tower: Tower, current: string): number {
     const c = tower.get(current)
-    const weights = c.children.map((n) => Object.assign({totalWeight: weight(tower, n)}, n))
-    const avg = weights.map((x) => x.totalWeight).reduce((x, y) => x + y) / c.children.length
-    const devs = weights.map((x) => Math.abs(x.totalWeight - avg))
+    const weights = c.children.map((n) => weight(tower, n))
+    const avg = weights.reduce((x, y) => x + y) / c.children.length
+    const devs = weights.map((x) => Math.abs(x - avg))
     const outlier = argmax(devs)
     const normal = (outlier + 1) % c.children.length
 
     if (balanced(tower, c.children[outlier])) {
-        return tower.get(c.children[outlier]).weight - (weights[outlier].totalWeight - weights[normal].totalWeight)
+        return tower.get(c.children[outlier]).weight - (weights[outlier] - weights[normal])
     } else {
         return fixWrongWeight(tower, c.children[outlier])
     }
